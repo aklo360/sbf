@@ -1,5 +1,8 @@
 {
   "version": 1,
   "include": ["/*"],
-  "exclude": []
+  "exclude": [
+    "/api/*",
+    "/_next/*"
+  ]
 }
