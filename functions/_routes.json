@@ -1,0 +1,3 @@
+[[routes]]
+pattern = "/api/*"
+script = "api.js"
