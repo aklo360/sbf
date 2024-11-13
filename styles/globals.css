@@ -3,19 +3,86 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --solana-purple: #9945FF;
+  --solana-teal: #14F195;
+  --mythic: #FF44B7;
+  --rare: #14F195;
+  --uncommon: #FFEA00;
+  --common: #8899AA;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #000000;
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Grid Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    linear-gradient(transparent 0%, rgba(153, 69, 255, 0.1) 50%, transparent 100%),
+    linear-gradient(90deg, transparent 0%, rgba(20, 241, 149, 0.1) 50%, transparent 100%),
+    linear-gradient(rgba(153, 69, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(153, 69, 255, 0.05) 1px, transparent 1px);
+  background-size: 
+    100% 100%,
+    100% 100%,
+    40px 40px,
+    40px 40px;
+  animation: gradientMove 15s linear infinite;
+  z-index: -1;
+}
+
+/* Spotlight Effects */
+body::after {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(153, 69, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(20, 241, 149, 0.15) 0%, transparent 50%);
+  filter: blur(80px);
+  animation: spotlightPulse 8s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+  100% {
+    background-position: 
+      0 100%,
+      100% 0,
+      0 40px,
+      40px 0;
+  }
+}
+
+@keyframes spotlightPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
 }
