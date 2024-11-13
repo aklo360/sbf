@@ -147,7 +147,7 @@ export default function Home() {
     <>
       <Head>
         <title>Solana Business Frogs</title>
-        <meta name="description" content="Solana Business Frogs is the first 10k collection to mint out via bonding curve on Curved.wtf, the PumpFun of NFTs. Classic 24x24px dimensions & iconic traits inspired by CryptoPunks, SMBs, ThugBirdz & more on an all original base character." />
+        <meta name="description" content="Solana Business Frogs is the first 10k collection to mint out via bonding curve on Curved.wtf, the PumpFun of NFTs. Classic 24x24px dimensions &amp; iconic traits inspired by CryptoPunks, SMBs, ThugBirdz &amp; more on an all original base character." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/img/logo.png" />
         
@@ -155,14 +155,14 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://solanabusinessfrogs.com/" />
         <meta property="og:title" content="Solana Business Frogs" />
-        <meta property="og:description" content="Solana Business Frogs is the first 10k collection to mint out via bonding curve on Curved.wtf, the PumpFun of NFTs. Classic 24x24px dimensions & iconic traits inspired by CryptoPunks, SMBs, ThugBirdz & more on an all original base character." />
+        <meta property="og:description" content="Solana Business Frogs is the first 10k collection to mint out via bonding curve on Curved.wtf, the PumpFun of NFTs. Classic 24x24px dimensions &amp; iconic traits inspired by CryptoPunks, SMBs, ThugBirdz &amp; more on an all original base character." />
         <meta property="og:image" content="https://solanabusinessfrogs.com/img/logo.png" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://solanabusinessfrogs.com/" />
         <meta name="twitter:title" content="Solana Business Frogs" />
-        <meta name="twitter:description" content="Solana Business Frogs is the first 10k collection to mint out via bonding curve on Curved.wtf, the PumpFun of NFTs. Classic 24x24px dimensions & iconic traits inspired by CryptoPunks, SMBs, ThugBirdz & more on an all original base character." />
+        <meta name="twitter:description" content="Solana Business Frogs is the first 10k collection to mint out via bonding curve on Curved.wtf, the PumpFun of NFTs. Classic 24x24px dimensions &amp; iconic traits inspired by CryptoPunks, SMBs, ThugBirdz &amp; more on an all original base character." />
         <meta name="twitter:image" content="https://solanabusinessfrogs.com/img/logo.png" />
         <meta name="twitter:creator" content="@SolanaBFS" />
       </Head>
