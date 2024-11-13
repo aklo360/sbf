@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useState, useEffect, Fragment } from 'react'
 import styles from '@/styles/Home.module.css'
+import Image from 'next/image'
 
 // Custom interfaces for NFT traits rarity
 interface TraitRarity {
@@ -149,10 +150,16 @@ export default function Home() {
       <main className={styles.main}>
         {/* Hero Section */}
         <section className={styles.hero}>
-          <img src="/img/logo.png" alt="SBF Logo" className={styles.logo} />
+          <Image 
+            src="/img/logo.png" 
+            alt="SBF Logo" 
+            width={300}
+            height={300}
+            className={styles.logo}
+          />
           <h1 className={styles.title}>Solana Business Frogs</h1>
           <p className={styles.description}>
-            Solana Business Frogs is the first 10k collection to mint out via bonding curve on Curved.wtf, the PumpFun of NFTs. Classic 24x24px dimensions & iconic traits inspired by CryptoPunks, SMBs, ThugBirdz & more on an all original base character.
+            Solana Business Frogs is the first 10k collection to mint out via bonding curve on Curved.wtf, the PumpFun of NFTs. Classic 24x24px dimensions &amp; iconic traits inspired by CryptoPunks, SMBs, ThugBirdz &amp; more on an all original base character.
           </p>
         </section>
 
@@ -170,11 +177,13 @@ export default function Home() {
         <section className={styles.carouselSection}>
           <div className={styles.carousel}>
             {nftImages.map((img, index) => (
-              <img 
+              <Image 
                 key={index} 
                 src={img} 
-                alt={`SBF #${index + 1}`} 
-                className={styles.carouselItem} 
+                alt={`SBF #${index + 1}`}
+                width={300}
+                height={300}
+                className={styles.carouselItem}
               />
             ))}
           </div>
@@ -182,15 +191,15 @@ export default function Home() {
 
         {/* Utility Section */}
         <section className={styles.utility}>
-          <h2 className={styles.utilityTitle}>wHaT's ThE uTiLiTy?</h2>
+          <h2 className={styles.utilityTitle}>wHaT&apos;s ThE uTiLiTy?</h2>
           <p className={styles.utilityText}>
-            There is NO UTILITY or "ROADMAP". These frogs were launched just like a memecoin, on a bonding curve that permanently locks liquidity, so you can always sell back into it via Curved.wtf (creators received no funds from this mint).
+            There is NO UTILITY or &quot;ROADMAP&quot;. These frogs were launched just like a memecoin, on a bonding curve that permanently locks liquidity, so you can always sell back into it via Curved.wtf (creators received no funds from this mint).
             <br />
             <br />
             Solana Business Frogs are a collection of 1/1 digital artworks and social avatars meant to be collected and traded like toys or comic books, with provenance and ownership secured and decentralized by the Solana blockchain.
             <br />
             <br />
-            Let's make NFTs fun again.
+            Let&apos;s make NFTs fun again.
           </p>
         </section>
 
@@ -232,9 +241,11 @@ export default function Home() {
                         >
                           <div className={styles.imageCell}>
                             {traitImages[`${category.category}-${trait.value}`] && (
-                              <img 
+                              <Image 
                                 src={traitImages[`${category.category}-${trait.value}`]}
                                 alt={trait.value}
+                                width={128}
+                                height={128}
                                 className={styles.traitImage}
                               />
                             )}
@@ -261,9 +272,11 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className={styles.footerLogoLink}
               >
-                <img 
+                <Image 
                   src="/img/pxplogo.svg" 
                   alt="Pixel Pushers Logo" 
+                  width={24}
+                  height={24}
                   className={styles.footerLogo}
                 />
               </a>
