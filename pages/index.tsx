@@ -38,11 +38,11 @@ export default function Home() {
 
   // Preload images
   const preloadImage = (src: string) => {
-    return new Promise((resolve, reject) => {
-      const img = new Image()
+    return new Promise<void>((resolve, reject) => {
+      const img = new Image() as HTMLImageElement
       img.src = src
-      img.onload = resolve
-      img.onerror = reject
+      img.onload = () => resolve()
+      img.onerror = () => reject()
     })
   }
 
