@@ -3,8 +3,14 @@ const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
-    domains: ['solanabusinessfrogs.com']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'solanabusinessfrogs.com',
+      },
+    ],
   },
+  trailingSlash: true,
 }
 
 module.exports = nextConfig 

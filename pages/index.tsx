@@ -39,7 +39,7 @@ export default function Home() {
   // Preload images
   const preloadImage = (src: string) => {
     return new Promise<void>((resolve, reject) => {
-      const img = new Image() as HTMLImageElement
+      const img = document.createElement('img')
       img.src = src
       img.onload = () => resolve()
       img.onerror = () => reject()
