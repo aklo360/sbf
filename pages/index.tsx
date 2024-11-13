@@ -63,16 +63,36 @@ export default function Home() {
   useEffect(() => {
     // Fetch PFP images from API
     fetch('/api/getPfps')
-      .then(response => response.json())
-      .then(pfpImages => {
+      .then(response => {
+        if (!response.ok) {
+          console.warn('PFPs API returned:', response.status)
+          return { pfps: [] }
+        }
+        return response.json()
+      })
+      .then(data => {
+        const pfpImages = Array.isArray(data) ? data : []
         setNftImages([...pfpImages, ...pfpImages])
       })
-      .catch(error => console.error('Error loading PFPs:', error))
+      .catch(error => {
+        console.error('Error loading PFPs:', error)
+        setNftImages([])
+      })
 
     // Parse CSV data and organize by categories
     fetch('/rarity.csv')
-      .then(response => response.text())
+      .then(response => {
+        if (!response.ok) {
+          console.warn('CSV file returned:', response.status)
+          return ''
+        }
+        return response.text()
+      })
       .then(async csv => {
+        if (!csv) {
+          setTraitCategories([])
+          return
+        }
         const lines = csv.split('\n')
         let currentCategory = ''
         const traits: TraitCategory[] = []
@@ -81,11 +101,7 @@ export default function Home() {
 
         for (const line of lines) {
           const [attr, count, percentage] = line.split(',')
-          if (!attr.trim() || attr === 'Attribute') continue
-          
-          if (attr.includes('Attribute Count') || currentCategory === 'Attribute Count') {
-            continue
-          }
+          if (!attr?.trim() || attr === 'Attribute') continue
           
           if (!count && !percentage) {
             if (currentCategory && currentTraits.length) {
@@ -108,18 +124,22 @@ export default function Home() {
             // Preload the image
             try {
               await preloadImage(imagePath)
-            } catch {
+            } catch (err) {
               console.warn(`Failed to preload ${imagePath}`)
             }
           }
         }
         
-        if (currentCategory && !currentCategory.includes('Attribute Count') && currentTraits.length) {
+        if (currentCategory && currentTraits.length) {
           traits.push({ category: currentCategory, traits: currentTraits })
         }
 
         setTraitCategories(traits)
         setTraitImages(imageCache)
+      })
+      .catch(error => {
+        console.error('Error loading rarity data:', error)
+        setTraitCategories([])
       })
   }, [])
 
