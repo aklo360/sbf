@@ -156,6 +156,7 @@ export default function Home() {
             width={300}
             height={300}
             className={styles.logo}
+            priority
           />
           <h1 className={styles.title}>Solana Business Frogs</h1>
           <p className={styles.description}>
