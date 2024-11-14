@@ -61,23 +61,39 @@ export default function Home() {
   }
 
   useEffect(() => {
-    // Fetch PFP images from API
+    // Hardcode the images directly as fallback
+    const fallbackImages = [
+      '/img/pfps/9465.png',
+      '/img/pfps/9466.png',
+      '/img/pfps/9467.png',
+      '/img/pfps/9468.png',
+      '/img/pfps/9469.png',
+      '/img/pfps/9470.png',
+      '/img/pfps/9471.png',
+      '/img/pfps/9472.png',
+      '/img/pfps/9473.png',
+      '/img/pfps/9474.png',
+      '/img/pfps/9475.png',
+      '/img/pfps/9476.png',
+      '/img/pfps/9477.png',
+      '/img/pfps/9478.png',
+      '/img/pfps/9479.png'
+    ];
+
+    // Try to fetch from API first
     fetch('/api/getPfps')
-      .then(response => {
-        if (!response.ok) {
-          console.warn('PFPs API returned:', response.status)
-          return { pfps: [] }
-        }
-        return response.json()
-      })
+      .then(response => response.json())
       .then(data => {
-        const pfpImages = Array.isArray(data) ? data : []
-        setNftImages([...pfpImages, ...pfpImages])
+        if (Array.isArray(data) && data.length > 0) {
+          setNftImages([...data, ...data]); // Double for infinite scroll
+        } else {
+          setNftImages([...fallbackImages, ...fallbackImages]); // Use fallback if API fails
+        }
       })
       .catch(error => {
-        console.error('Error loading PFPs:', error)
-        setNftImages([])
-      })
+        console.error('Error loading PFPs:', error);
+        setNftImages([...fallbackImages, ...fallbackImages]); // Use fallback on error
+      });
 
     // Parse CSV data and organize by categories
     fetch('/rarity.csv')
@@ -197,13 +213,65 @@ export default function Home() {
         {/* NFT Carousel Section */}
         <section className={styles.carouselSection}>
           <div className={styles.carousel}>
-            {nftImages.map((img, index) => (
-              <Image 
-                key={index} 
-                src={img} 
-                alt={`SBF #${index + 1}`}
-                width={300}
-                height={300}
+            {[
+              '/img/pfps/9465.png',
+              '/img/pfps/9476.png',
+              '/img/pfps/9518.png',
+              '/img/pfps/9540.png',
+              '/img/pfps/9577.png',
+              '/img/pfps/9663.png',
+              '/img/pfps/9678.png',
+              '/img/pfps/9744.png',
+              '/img/pfps/9745.png',
+              '/img/pfps/9825.png',
+              '/img/pfps/9883.png',
+              '/img/pfps/9888.png',
+              '/img/pfps/9891.png',
+              '/img/pfps/9892.png',
+              '/img/pfps/9893.png',
+              '/img/pfps/9896.png',
+              '/img/pfps/9919.png',
+              '/img/pfps/9966.png',
+              '/img/pfps/9967.png',
+              '/img/pfps/9973.png',
+              '/img/pfps/9975.png',
+              '/img/pfps/9978.png',
+              '/img/pfps/9981.png',
+              '/img/pfps/9983.png',
+              '/img/pfps/9985.png',
+              '/img/pfps/9988.png',
+              // Duplicate for infinite scroll
+              '/img/pfps/9465.png',
+              '/img/pfps/9476.png',
+              '/img/pfps/9518.png',
+              '/img/pfps/9540.png',
+              '/img/pfps/9577.png',
+              '/img/pfps/9663.png',
+              '/img/pfps/9678.png',
+              '/img/pfps/9744.png',
+              '/img/pfps/9745.png',
+              '/img/pfps/9825.png',
+              '/img/pfps/9883.png',
+              '/img/pfps/9888.png',
+              '/img/pfps/9891.png',
+              '/img/pfps/9892.png',
+              '/img/pfps/9893.png',
+              '/img/pfps/9896.png',
+              '/img/pfps/9919.png',
+              '/img/pfps/9966.png',
+              '/img/pfps/9967.png',
+              '/img/pfps/9973.png',
+              '/img/pfps/9975.png',
+              '/img/pfps/9978.png',
+              '/img/pfps/9981.png',
+              '/img/pfps/9983.png',
+              '/img/pfps/9985.png',
+              '/img/pfps/9988.png'
+            ].map((img, index) => (
+              <img 
+                key={index}
+                src={img}
+                alt={`SBF #${img.split('/').pop()?.replace('.png', '')}`}
                 className={styles.carouselItem}
               />
             ))}

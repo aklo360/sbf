@@ -37,23 +37,33 @@
   overflow: hidden;
   margin: 4rem 0;
   padding: 1rem 0;
+  width: 100%;
 }
 
 .carousel {
   display: flex;
-  animation: scroll 50s linear infinite;
   gap: 1rem;
   padding: 1rem 0;
+  animation: scroll 80s linear infinite;
+  width: fit-content;
 }
 
 .carouselItem {
   width: 300px;
   height: 300px;
-  image-rendering: pixelated;
   border: 3px solid var(--solana-purple);
   flex-shrink: 0;
   transition: transform 0.3s;
   transform-origin: center center;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+.carouselImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
 }
 
 .carouselItem:hover {
@@ -66,7 +76,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 

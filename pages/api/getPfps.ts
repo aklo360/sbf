@@ -1,25 +1,27 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import fs from 'fs'
-import path from 'path'
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  try {
-    const pfpsDirectory = path.join(process.cwd(), 'public/img/pfps')
-    
-    // Check if directory exists
-    if (!fs.existsSync(pfpsDirectory)) {
-      console.warn('PFPs directory not found:', pfpsDirectory)
-      return res.status(200).json([])
-    }
-
-    const fileNames = fs.readdirSync(pfpsDirectory)
-    const pngFiles = fileNames
-      .filter(file => file.endsWith('.png'))
-      .map(file => `/img/pfps/${file}`)
-    
-    res.status(200).json(pngFiles)
-  } catch (error) {
-    console.error('Error reading pfps directory:', error)
-    res.status(200).json([]) // Return empty array instead of error
-  }
+  // Hardcode the exact PFP filenames that exist in public/img/pfps/
+  const images = [
+    '/img/pfps/9465.png',
+    '/img/pfps/9466.png',
+    '/img/pfps/9467.png',
+    '/img/pfps/9468.png',
+    '/img/pfps/9469.png',
+    '/img/pfps/9470.png',
+    '/img/pfps/9471.png',
+    '/img/pfps/9472.png',
+    '/img/pfps/9473.png',
+    '/img/pfps/9474.png',
+    '/img/pfps/9475.png',
+    '/img/pfps/9476.png',
+    '/img/pfps/9477.png',
+    '/img/pfps/9478.png',
+    '/img/pfps/9479.png'
+  ]
+  
+  // Double the array for infinite scroll
+  const duplicatedImages = [...images, ...images]
+  
+  res.status(200).json(duplicatedImages)
 } 
