@@ -3,6 +3,13 @@ import { useState, useEffect, Fragment } from 'react'
 import styles from '@/styles/Home.module.css'
 import Image from 'next/image'
 
+const STICKER_SOURCES = [
+  '/stickers/excited.webm',
+  '/stickers/LFG.webm',
+  '/stickers/money.webm',
+  '/stickers/wink.webm'
+]
+
 // Custom interfaces for NFT traits rarity
 interface TraitRarity {
   trait_type: string;
@@ -27,6 +34,7 @@ export default function Home() {
     rare: true,
     mythic: true
   })
+  const [currentStickerIndex, setCurrentStickerIndex] = useState(0)
 
   // Calculate rarity tier based on percentage
   const getRarityTier = (percentage: number): string => {
@@ -59,6 +67,14 @@ export default function Home() {
       [rarity]: !prev[rarity]
     }))
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentStickerIndex(prevIndex => (prevIndex + 1) % STICKER_SOURCES.length)
+    }, 10000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     // Hardcode the images directly as fallback
@@ -186,13 +202,14 @@ export default function Home() {
       <main className={styles.main}>
         {/* Hero Section */}
         <section className={styles.hero}>
-          <Image 
-            src="/img/logo.png" 
-            alt="SBF Logo" 
-            width={300}
-            height={300}
+          <video
+            key={STICKER_SOURCES[currentStickerIndex]}
             className={styles.logo}
-            priority
+            src={STICKER_SOURCES[currentStickerIndex]}
+            autoPlay
+            loop
+            muted
+            playsInline
           />
           <h1 className={styles.title}>Solana Business Frogs</h1>
           <p className={styles.description}>
