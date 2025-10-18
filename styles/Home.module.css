@@ -8,10 +8,11 @@
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 4rem 1rem;
+  padding: 4rem 4rem;
   border: 4px solid var(--solana-purple);
   box-shadow: 0 0 20px var(--solana-purple);
-  margin-bottom: 4rem;
+  margin: 1rem auto;
+  max-width: 65vw;
   image-rendering: pixelated;
   display: flex;
   flex-direction: column;
@@ -106,6 +107,12 @@
   background: var(--solana-teal);
   color: black;
   transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    max-width: 90vw;
+  }
 }
 
 /* Updated Rarity Section with Table Layout */
