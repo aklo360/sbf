@@ -19,6 +19,11 @@
 
 # production
 /build
+/output/
+
+# local project state
+/.cache/
+/.recovery/
 
 # misc
 .DS_Store
